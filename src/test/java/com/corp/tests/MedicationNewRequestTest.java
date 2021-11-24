@@ -30,7 +30,7 @@ public class MedicationNewRequestTest extends TestSetUp{
     }
 
     @Test(description = "Medication - New Request:Fill all fields using next data")
-    void medicationNewRequestFillForm(){
+    void medicationNewRequestFillForm() throws InterruptedException {
         newRequestPage.waitingForPageLoaded(5);
         newRequestPage.scriptExecutor();
         newRequestPage.inputPatientField("Test Patient","Test - Patient - P00201");

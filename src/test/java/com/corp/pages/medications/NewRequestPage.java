@@ -82,10 +82,11 @@ public class NewRequestPage extends AbstractMainPage {
         }
     }
 
-    @Step("Medication field: start input {startInput}, and then pick any available value from dropdown hint")
-    public void inputMedication(String startInput){
+    @Step("Medication field: start input {startInput}, and then picck any avaible value from dropdown hint")
+    public void inputMedication(String startInput) throws InterruptedException {
         medicationField.sendKeys(startInput);
-        driver.findElement(By.cssSelector(".tt-suggestion")).click();
+        Thread.sleep(1000);
+        driver.findElement(with(By.cssSelector(".tt-suggestion")).near(driver.findElement(By.cssSelector(".test-medication-input .tt-input")))).click();
     }
 
     @Step("Prescription field: input {textForInput}")
