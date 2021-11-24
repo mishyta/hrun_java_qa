@@ -7,9 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class LoginPage extends AbstractBasePage {
 
-    private   String URL = "http://demo.hospitalrun.io/";
+    private final String URL = "http://demo.hospitalrun.io/";
 
     @FindBy(css = "div.signin-logo")
     private WebElement pageLogo;
@@ -29,7 +31,7 @@ public class LoginPage extends AbstractBasePage {
     @FindBy(css = "div.signin-contents")
     private WebElement signForm;
 
-    private WebDriverWait wait = new WebDriverWait(driver,10);
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     //TODO method "set/get" credentials(As valid and no), maybe use for storage JSON
 

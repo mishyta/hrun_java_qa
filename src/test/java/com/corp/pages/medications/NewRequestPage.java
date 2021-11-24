@@ -1,25 +1,18 @@
 package com.corp.pages.medications;
 
 import com.corp.pages.AbstractMainPage;
-import com.sun.javafx.binding.StringFormatter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
-import static org.openqa.selenium.support.locators.RelativeLocator.RelativeBy.*;
 
-import java.text.Format;
-import java.time.Instant;
-import java.util.Formatter;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class NewRequestPage extends AbstractMainPage {
 

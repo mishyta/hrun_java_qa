@@ -8,6 +8,7 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 
 // TODO: attach logging to file
 
+@SuppressWarnings("deprecation")
 public class Listener implements WebDriverEventListener {
     @Override
     public void beforeAlertAccept(WebDriver webDriver) {

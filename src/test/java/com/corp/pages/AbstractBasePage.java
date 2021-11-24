@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
+import java.time.Duration;
 
 public abstract class AbstractBasePage {
 
@@ -18,11 +19,11 @@ public abstract class AbstractBasePage {
     public AbstractBasePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     protected void waitThatPageDisplayedByElement(WebElement element, int timeOutInSec){
-        WebDriverWait waitForPageLoaded = new WebDriverWait(driver,timeOutInSec);
+        WebDriverWait waitForPageLoaded = new WebDriverWait(driver,Duration.ofSeconds(timeOutInSec));
         waitForPageLoaded.until(ExpectedConditions.visibilityOf(element));
     }
 

@@ -12,7 +12,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import java.io.ByteArrayInputStream;
@@ -68,6 +67,7 @@ public class TestSetUp {
             capabilities.setCapability("browserVersion", "95.0");
             capabilities.setCapability("selenoid:options", SelenoidOptions);
 
+            //noinspection deprecation
             driver = new EventFiringWebDriver(new RemoteWebDriver(
                     URI.create(String.format("http://%s:%d/wd/hub", SelenoidIP, SelenoidPort)).toURL(), capabilities))
                     .register(new Listener());

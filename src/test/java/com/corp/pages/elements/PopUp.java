@@ -43,8 +43,7 @@ public class PopUp extends AbstractBasePage {
     }
 
     public void assertPopupIsNotPresent(){
-        Assert.assertTrue(!checkElementExists(pagePopupLocator),
-                "popup is present");
+        Assert.assertFalse(checkElementExists(pagePopupLocator), "popup is present");
     }
 
     public void waitUntilPopupDisplayed(){

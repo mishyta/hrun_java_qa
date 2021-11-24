@@ -7,9 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public abstract class AbstractMainPage extends AbstractBasePage {
 
-    protected WebDriverWait wait = new WebDriverWait(driver,10);
+    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @FindBy(css = "h1.view-current-title")
     protected WebElement pageTittle;
