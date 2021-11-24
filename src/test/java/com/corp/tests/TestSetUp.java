@@ -50,7 +50,7 @@ public class TestSetUp {
 
 
     private void setDriverForEnvironment() throws MalformedURLException {
-        if(!JNKENV) {
+        if(JNKENV) {
 
             // if env = jenkins run test in remote browser, use selenoid
 
