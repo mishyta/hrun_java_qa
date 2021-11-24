@@ -85,6 +85,7 @@ public class LoginPage extends AbstractBasePage {
         clickSignIn();
     }
 
+    @Step("Wait until page loaded. Timeout: {timeOutInSec} sec")
     public void waitingForPageLoaded(int timeOutInSec){
         waitThatPageDisplayedByElement(pageLogo, timeOutInSec);
     }

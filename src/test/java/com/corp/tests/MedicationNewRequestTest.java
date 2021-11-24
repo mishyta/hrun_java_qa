@@ -29,13 +29,13 @@ public class MedicationNewRequestTest extends TestSetUp{
         newRequestPage.sideBar.assertThatSelectedPrimOptContainsSubOptions();
     }
 
-    @Test(invocationCount = 1,description = "Medication - New Request:Fill all fields using next data")
+    @Test(description = "Medication - New Request:Fill all fields using next data")
     void medicationNewRequestFillForm(){
         newRequestPage.waitingForPageLoaded(5);
         newRequestPage.scriptExecutor();
         newRequestPage.inputPatientField("Test Patient","Test - Patient - P00201");
         newRequestPage.selectEnyAvailableDateInVisit();
-        newRequestPage.choseYesterdayInPrescriptionDate();
+        newRequestPage.chooseYesterdayInPrescriptionDate();
         newRequestPage.inputMedication("Pramoxine");
         newRequestPage.inputPrescription("Testing prescription");
         newRequestPage.inputQuantityRequested(1,5);
@@ -50,7 +50,7 @@ public class MedicationNewRequestTest extends TestSetUp{
     }
 
 
-    @Test
+    @Test(description = "Assert that error popup showed")
     void assertThatErrorPopupShowed(){
         newRequestPage.waitingForPageLoaded(5);
         newRequestPage.addRequest();

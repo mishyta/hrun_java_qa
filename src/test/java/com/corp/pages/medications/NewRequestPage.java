@@ -1,6 +1,7 @@
 package com.corp.pages.medications;
 
 import com.corp.pages.AbstractMainPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -47,6 +48,7 @@ public class NewRequestPage extends AbstractMainPage {
         super(driver);
     }
 
+    @Step("Execute script =)")
     public void scriptExecutor()  {
         while (true) {
 
@@ -59,12 +61,14 @@ public class NewRequestPage extends AbstractMainPage {
         }
     }
 
+    @Step("Patient field: Start input '{startInput}', and then select from dropdown hint '{selectFromHintDD}'")
     public void inputPatientField(String startInput,String selectFromHintDD){
 
         patientField.sendKeys(startInput);
         driver.findElement(By.xpath(String.format("//*[text()='%s']",selectFromHintDD))).click();
     }
 
+    @Step("Visit select: Select any avaible date")
     public void selectEnyAvailableDateInVisit(){
         Select select = new Select(visitSelect);
 
@@ -72,22 +76,25 @@ public class NewRequestPage extends AbstractMainPage {
         long end = start + 3*1000;
         while (System.currentTimeMillis() < end) {
             if (select.getOptions().size() > 1) {
-                select.selectByIndex(2);
+                select.selectByIndex(2); // TODO select randome date
                 break;
             }
         }
     }
 
+    @Step("Medication field: start input {startInput}, and then picck any avaible value from dropdown hint")
     public void inputMedication(String startInput){
         medicationField.sendKeys(startInput);
         driver.findElement(with(By.cssSelector(".tt-suggestion")).near(driver.findElement(By.cssSelector(".test-medication-input .tt-input")))).click();
     }
 
+    @Step("Prescription field: input {textForInput}")
     public void inputPrescription(String textForInput){
         prescriptionField.sendKeys(textForInput);
     }
 
-    public void choseYesterdayInPrescriptionDate(){
+    @Step("Prescription date: choose yesterday")
+    public void chooseYesterdayInPrescriptionDate(){
         Actions actions = new Actions(driver);
         actions.click(prescriptionDate);
         actions.sendKeys(Keys.LEFT, Keys.ENTER);
@@ -96,16 +103,19 @@ public class NewRequestPage extends AbstractMainPage {
 
     }
 
+    @Step("Quantity Requested: input random value from {from} to {to} ")
     public void inputQuantityRequested(int from, int to){
         quantityRequestedField.sendKeys(Objects.toString(new Random().nextInt(to-from) + from));
     }
 
+    @Step("Refills: input random value from {from} to {to} ")
     public void inputQuantityRefills(int from, int to){
         refillsField.sendKeys(Objects.toString(new Random().nextInt(to-from) + from));
     }
 
+    @Step("Click add button")
     public void addRequest(){
-        while (true){
+        while (true){ //TODO think what do with that
             if(driver.findElements(By.cssSelector(".has-error")).isEmpty()){
                 break;
             }

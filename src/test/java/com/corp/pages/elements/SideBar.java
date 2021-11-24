@@ -1,6 +1,7 @@
 package com.corp.pages.elements;
 
 import com.corp.pages.AbstractBasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -73,23 +74,27 @@ public class SideBar extends AbstractBasePage {
         }
     }
 
+    @Step("SideBar - > LogOut")
     public void logOut(){
         wait.until(ExpectedConditions.visibilityOf(settingsGear));
         settingsGear.click();
         logOut.click();
     }
 
+    @Step("SideBar - > Click option {option}")
     public void clickOption(SubOpts option){
         driver.findElement(option.getPrime().by).click();
         driver.findElement(option.by).click();
     }
 
+    @Step("Get from selected prim option names of sub options")
     private List<String> getSelectedPrimOptSubOptNames(){
         List<String> subOptNames= new ArrayList<>();
         subOpts.forEach(subOpt -> subOptNames.add(subOpt.getText()));
         return subOptNames;
     }
 
+    @Step("Check which prim option is selected")
     private PrimeOpts checkWhichPrimOptIsSelected(){
         PrimeOpts[] primeOpts = PrimeOpts.values();
         for (PrimeOpts primeOpt : primeOpts){
@@ -101,6 +106,7 @@ public class SideBar extends AbstractBasePage {
         throw new RuntimeException("No one PrimOpt selected");
     }
 
+    @Step("Assert that selected prim option contains sub options")
     public void assertThatSelectedPrimOptContainsSubOptions(){
 
         Assert.assertEquals(

@@ -2,6 +2,7 @@ package com.corp.pages;
 
 import com.corp.pages.elements.PopUp;
 import com.corp.pages.elements.SideBar;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,7 @@ public abstract class AbstractMainPage extends AbstractBasePage {
 
     }
 
+    @Step("Wait until page loaded. Timeout: {timeOutInSec} sec")
     public void waitingForPageLoaded(int timeOutInSec){
         waitThatPageDisplayedByElement(pageTittle, timeOutInSec);
     }

@@ -9,7 +9,7 @@ public class LoginTest extends TestSetUp {
     void loginWithValidKeys(){
         loginPage.loginWithValidCreeds();
         PatientListingPage patientListingPage = new PatientListingPage(driver);
-        patientListingPage.waitingForPageLoaded(5);
+        patientListingPage.waitingForPageLoaded(10);
     }
 
     @Test(description = "Login with invalid creeds")
