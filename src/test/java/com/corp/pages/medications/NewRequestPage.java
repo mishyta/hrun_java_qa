@@ -82,10 +82,10 @@ public class NewRequestPage extends AbstractMainPage {
         }
     }
 
-    @Step("Medication field: start input {startInput}, and then picck any avaible value from dropdown hint")
+    @Step("Medication field: start input {startInput}, and then pick any available value from dropdown hint")
     public void inputMedication(String startInput){
         medicationField.sendKeys(startInput);
-        driver.findElement(with(By.cssSelector(".tt-suggestion")).near(driver.findElement(By.cssSelector(".test-medication-input .tt-input")))).click();
+        driver.findElement(By.cssSelector(".tt-suggestion")).click();
     }
 
     @Step("Prescription field: input {textForInput}")
