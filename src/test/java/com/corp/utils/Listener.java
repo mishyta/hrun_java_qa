@@ -1,4 +1,4 @@
-package com.corp;
+package com.corp.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;

@@ -1,4 +1,4 @@
-package com.corp;
+package com.corp.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends AbstractBasePage {
 
-    public String URL = "http://demo.hospitalrun.io/";
+    private   String URL = "http://demo.hospitalrun.io/";
+
+    @FindBy(css = "div.signin-logo")
+    private WebElement pageLogo;
 
     @FindBy(css = "#identification")
     private WebElement loginField;
@@ -27,9 +29,7 @@ public class LoginPage extends BasePage{
     @FindBy(css = "div.signin-contents")
     private WebElement signForm;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
+    private WebDriverWait wait = new WebDriverWait(driver,10);
 
     //TODO method "set/get" credentials(As valid and no), maybe use for storage JSON
 
@@ -42,13 +42,17 @@ public class LoginPage extends BasePage{
         Creeds(String value){this.value =value;}
     }
 
-    private WebDriverWait wait = new WebDriverWait(driver,10);
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        this.openPage(URL);
+    }
 
     @Step("Open login page: {url}")
     @Override
     public void openPage(String url) {
         super.openPage(url);
-        wait.until(ExpectedConditions.visibilityOf(signForm));
+        waitingForPageLoaded(5);
     }
 
     @Step("Input credentials")
@@ -63,8 +67,8 @@ public class LoginPage extends BasePage{
     }
 
     @Step("Check login status")
-    private boolean checkLoginStatus(){
-        return true;
+    public void checkLoginAlertExists(){
+        wait.until(ExpectedConditions.visibilityOf(loginAlert));
     }
 
 
@@ -72,17 +76,16 @@ public class LoginPage extends BasePage{
     public void loginWithValidCreeds(){
         inputCreeds(Creeds.LOGIN.value, Creeds.PASSWORD.value);
         clickSignIn();
-        Assert.assertTrue(checkLoginStatus(),
-                "Login with valid creeds unsuccessful");
     }
     @Step("Login with invalid credentials")
     public void loginWithInvalidCreeds(){
         inputCreeds("Some_login", "Some_password");
         clickSignIn();
-        Assert.assertFalse(false,
-                "Login with invalid creeds successful");
     }
 
+    public void waitingForPageLoaded(int timeOutInSec){
+        waitThatPageDisplayedByElement(pageLogo, timeOutInSec);
+    }
 
 
 }

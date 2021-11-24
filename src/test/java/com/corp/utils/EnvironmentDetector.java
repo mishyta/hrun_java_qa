@@ -1,8 +1,8 @@
-package com.corp;
+package com.corp.utils;
 
 public class EnvironmentDetector {
 
-    static final boolean JNKENV = detectJenkins();
+    public static final boolean JNKENV = detectJenkins();
 
     /**
      * @return return true if environment is contains "jenkins"
